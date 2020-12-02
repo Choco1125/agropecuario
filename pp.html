@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="">
+		<input id="valor" type="week">
+		<input onclick="hacer();" value="hacer" type="button">
+	</form>
+	
+</body>
+<script src="js/jquery.min.js"></script>
+	<script>
+		function hacer(){
+			var dato = $('#valor').val().split('-W');
+			var year = dato[0];
+			var week = dato[1];
+			var anio = new Date(year,0,1);
+			var primerdia = anio.getDay();
+			var correccion = -anio.getDay() + 1;
+
+			if(primerdia > 4){
+				week++;
+			}
+			var inicio = new Date(year ,0 ,(week-1) * 7 + correccion);		
+			var fin = new Date(year ,0 ,(week-1) * 7 + correccion + 6);		
+
+			var a = ''+inicio;
+			var b = ''+fin;
+
+			fecha_inicio = a.split(' ')[2]+'-'+(inicio.getMonth()+1)+'-'+(inicio.getYear()+1900);
+			fecha_fin = b.split(' ')[2]+'-'+(fin.getMonth()+1)+'-'+(fin.getYear()+1900);
+
+			console.log(fecha_inicio);
+			console.log(fecha_fin);
+		}
+	</script>
+</html>
