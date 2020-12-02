@@ -149,7 +149,8 @@ if (isset($_POST)) {
 		$id;
 
 		//se registra los datos importantes de la labor
-		$labor = explode('-', $_POST['labor'])[0];
+		// $labor = explode('-', $_POST['labor'])[0];
+		$labor = $_POST['labor']; //Elimina el indice nulo y se deja solo el id
 		$lote = $_POST['lote'];
 		$fecha = $_POST['fecha'];
 		$empleados = "";
@@ -163,7 +164,7 @@ if (isset($_POST)) {
 
 
 		//estado para las labores presupuestadas guardo o el número de jornales o el total de kilos
-		$query = "INSERT INTO registro_labor(labor_id, lote_id, fecha, tipo, estado, valor, observacion,labor) VALUES ('$labor','$lote','$fecha','$tipo_l','$empleados','$valor','$observacion','0')";
+		$query = "INSERT INTO registro_labor(labor_id, lote_id, fecha, tipo, estado, valor, observacion,labor,ph_inicial,ph_final) VALUES ('$labor','$lote','$fecha','$tipo_l','$empleados','$valor','$observacion','0','','')";
 		$sql = mysqli_query($conection, $query);
 		if ($sql) {
 			$query = "SELECT id FROM registro_labor ORDER BY id DESC LIMIT 0,1";
@@ -174,6 +175,7 @@ if (isset($_POST)) {
 				/*****************************/
 				//registrar insumos
 				/*****************************/
+
 				$cantidad_insumos = $_POST['cantidad_insumos'];
 				for ($i = 1; $i <= $cantidad_insumos; $i++) {
 					if (isset($_POST['id_insumo' . $i])) {
