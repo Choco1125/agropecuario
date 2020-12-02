@@ -7,7 +7,8 @@ if (isset($_POST)) {
 	if ($tipo == "add_otros") {
 
 		//obtenemos los datos
-		$tipo = $_POST['tipo'];
+		//El valor no se sabe de dónde sale pero se pasa uno porque no llega
+		$tipo = $_POST['tipo'] ?? 1;
 		$fecha = $_POST['fecha'];
 		$rubro_id = $_POST['rubro'];
 		$valor = $_POST['valor'];
