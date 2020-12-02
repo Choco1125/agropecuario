@@ -32,7 +32,8 @@ if (isset($_POST)) {
 
 		//obtenemos los datos
 		$fecha = $_POST['fecha'];
-		$tipo = $_POST['tipo'];
+		//Tipo no se sabe para qué el uso, así que se pasará un uno por defecto.
+		$tipo = $_POST['tipo'] ?? 1;
 		$rubro_id = $_POST['rubro'];
 		$valor = $_POST['valor'];
 		$n_factura = $_POST['n_factura'];

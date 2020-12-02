@@ -126,7 +126,6 @@ include "main.php";
       <?php
       include "../../php/conection.php";
       $query = "SELECT g.id,g.fecha,g.n_factura,r.nombre,g.valor,g.observacion FROM gastos_financieros AS g INNER JOIN rubro_financiero AS r WHERE g.rubro_id = r.id AND g.finca_id=" . $_SESSION['finca'];
-      echo $query;
       $sql = mysqli_query($conection, $query);
       if ($sql) {
         while ($row = mysqli_fetch_array($sql)) {

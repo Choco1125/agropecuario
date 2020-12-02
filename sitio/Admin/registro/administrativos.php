@@ -192,6 +192,7 @@ include "end.php";
           data: $('#add').serialize() + '&op=add_administrativos',
         })
         .done(function(data) {
+          alert(data);
           if (data == '1') {
             swal('Buen Trabajo!', 'Gasto registrado correctamente', 'success').then((res) => {
               location.reload();
