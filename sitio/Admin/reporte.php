@@ -12,7 +12,6 @@ include "main.php";
 	<br>
 	<a class="btn btn-success" href="index.php"><i class="fas fa-arrow-left"></i></a>
 	<br>
-
 	<br>
 	<form method="GET" onsubmit="return verificar();">
 		<h2 class="text-center">
@@ -29,15 +28,13 @@ include "main.php";
 			<div class="col-12 col-md-4">
 				<div class="form-group">
 					<label for="inicio">Fecah de Inicio</label>
-					<input id="inicio" name="inicio" type="date" value="<?php
-																															echo (isset($_GET)) ? $_GET['inicio'] : '' ?>" class="form-control">
+					<input id="inicio" name="inicio" type="date" value="<?php echo (isset($_GET)) ? $_GET['inicio'] : '' ?>" class="form-control">
 				</div>
 			</div>
 			<div class="col-12 col-md-4">
 				<div class="form-group">
 					<label for="fin">Fecha Final</label>
-					<input id="fin" name="fin" type="date" value="<?php
-																												echo (isset($_GET)) ? $_GET['fin'] : '' ?>" class="form-control">
+					<input id="fin" name="fin" type="date" value="<?php echo (isset($_GET)) ? $_GET['fin'] : '' ?>" class="form-control">
 				</div>
 			</div>
 			<div class="col-12 col-md-4">
@@ -191,7 +188,7 @@ include "main.php";
 											if ($aux) {
 												$num = mysqli_num_rows($aux);
 												$aux = mysqli_fetch_array($aux);
-												if ($num > 0) {
+												if ($num > 0 && !is_null($aux['cantidad'])) {
 													echo '<tr>
 														<td>' . $dat['nombre'] . '</td>
 														<td>' . $aux['cantidad'] . '</td>
@@ -288,7 +285,7 @@ include "main.php";
 											if ($aux) {
 												$num = mysqli_num_rows($aux);
 												$aux = mysqli_fetch_array($aux);
-												if ($num > 0) {
+												if ($num > 0 && !is_null($aux['cantidad'])) {
 													echo '<tr>
 														<td>' . $dat['nombre'] . '</td>
 														<td>' . $aux['cantidad'] . '</td>
