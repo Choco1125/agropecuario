@@ -5,7 +5,7 @@ if (isset($_SESSION['id_rol'])) {
 	// 	echo 'No tiene permisos para utilizar esta función';
 	// 	return;			
 	// }
-	if (!array_search($_SESSION['id_rol'], ['1', '2'])) {
+	if (!array_search($_SESSION['id_rol'], ['0', '1', '2'])) {
 		echo 'No tiene permisos para utilizar esta función';
 		return;
 	}
