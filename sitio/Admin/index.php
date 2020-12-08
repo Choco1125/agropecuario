@@ -53,7 +53,7 @@ include "main.php";
 	</div>
 	<div class="row">
 		<div class="col-12 col-md-4 text-center">
-			<div class="card" data='registro_ventas'>
+			<div class="card" data='ventas.php'>
 				<i class="icon fas fa-file-invoice-dollar"></i>
 				<h3 class="title">Registrar Ventas</h3>
 			</div>
