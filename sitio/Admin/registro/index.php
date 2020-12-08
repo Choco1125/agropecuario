@@ -79,12 +79,6 @@ include "main.php";
 			</div>
 		</div>
 		<div class="col-12 col-md-4 text-center">
-			<div class="card" data="temperatura.php">
-				<i class="icon fas fa-image"></i>
-				<h3 class="title">Imágenes de temperatura</h3>
-			</div>
-		</div>
-		<div class="col-12 col-md-4 text-center">
 			<div class="card" data="../index.php">
 				<i class="icon fas fa-arrow-alt-circle-left"></i>
 				<h3 class="title">Volver al Inicio</h3>
