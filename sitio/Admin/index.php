@@ -44,10 +44,16 @@ include "main.php";
 				<h3 class="title">Registro</h3>
 			</div>
 		</div>
-		<div class="col-12 col-md-4 text-center">
+		<!-- <div class="col-12 col-md-4 text-center">
 			<div class="card" data="remision_ventas">
 				<i class="icon fas fa-file-signature"></i>
 				<h3 class="title">Remisión de Ventas</h3>
+			</div>
+		</div> -->
+		<div class="col-12 col-md-4 text-center">
+			<div class="card" data="temperatura.php">
+				<i class="icon fas fa-image"></i>
+				<h3 class="title">Imágenes de temperatura</h3>
 			</div>
 		</div>
 	</div>
@@ -68,12 +74,6 @@ include "main.php";
 			<div class="card" data="maquinaria.php">
 				<i class="icon fas fa-tractor"></i>
 				<h3 class="title">Máquinaria y Equipos</h3>
-			</div>
-		</div>
-		<div class="col-12 col-md-4 text-center">
-			<div class="card" data="temperatura.php">
-				<i class="icon fas fa-image"></i>
-				<h3 class="title">Imágenes de temperatura</h3>
 			</div>
 		</div>
 	</div>
