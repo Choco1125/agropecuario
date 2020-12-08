@@ -5,20 +5,19 @@ include "main.php";
 ?>
 
 <style>
+  .contenedor {
+    overflow: auto;
+    width: 100%;
+  }
 
-.contenedor {
-	overflow: auto;
-	width: 100%;
-}
+  th,
+  td {
+    text-align: center;
+  }
 
-th, td {
-	text-align: center;
-}
-
-i {
-	color: white;
-}
-
+  i {
+    color: white;
+  }
 </style>
 <!-- Modal para agregar clientes -->
 <div class="modal fade" id="clientes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -30,30 +29,30 @@ i {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-        <div class="modal-body">
-          <form id="add_cliente" method="POST">
+      <div class="modal-body">
+        <form id="add_cliente" method="POST">
 
-            <div class="form-group">
+          <div class="form-group">
             <label for="nit"> Nit </label>
             <input name="nit" type="text" class="form-control" id="nit" placeholder="Ingrese el nit">
-            </div>
+          </div>
 
-            <div class="form-group">
+          <div class="form-group">
             <label for="nombre"> Nombre </label>
             <input name="nombre" type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre">
-            </div>
+          </div>
 
-            <div class="form-group">
+          <div class="form-group">
             <label for="telefono"> Teléfono </label>
             <input name="telefono" type="number" class="form-control" id="telefono" placeholder="Ingrese el teléfono">
-            </div>
+          </div>
 
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" onclick="limpiar_c();" data-dismiss="modal"> Cerrar </button>
-          <button type="button" onclick="add_cliente();" class="btn btn-success"> Agregar cliente </button>
-        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" onclick="limpiar_c();" data-dismiss="modal"> Cerrar </button>
+        <button type="button" onclick="add_cliente();" class="btn btn-success"> Agregar cliente </button>
+      </div>
     </div>
   </div>
 </div>
@@ -64,7 +63,7 @@ i {
   <a class="btn btn-success" href="index.php"><i class="fas fa-arrow-left"></i></a>
   <br>
 
-	<br>
+  <br>
   <h3> Registrar Ventas</h3>
   <br>
   <form id="add_venta" method="POST">
@@ -73,17 +72,17 @@ i {
       <select class="form-control" name="lote" id="lote">
         <option value="">Seleccione un lote</option>
         <?php
-          require '../../php/conection.php';
-          $query = "SELECT l.id,l.nombre,c.nombre AS 'cultivo' FROM lote AS l INNER JOIN cultivo AS c WHERE l.cultivo_id = c.id AND l.id_finca=".$_SESSION['finca'];
-          $sql = mysqli_query($conection,$query);
-          if ($sql) {
-            while ($row = mysqli_fetch_array($sql)) {
+        require '../../php/conection.php';
+        $query = "SELECT l.id,l.nombre,c.nombre AS 'cultivo' FROM lote AS l INNER JOIN cultivo AS c WHERE l.cultivo_id = c.id AND l.id_finca=" . $_SESSION['finca'];
+        $sql = mysqli_query($conection, $query);
+        if ($sql) {
+          while ($row = mysqli_fetch_array($sql)) {
         ?>
-            <option value="<?php echo $row['id'] ?>"><?php echo $row['nombre'].' - '.$row['cultivo'] ?></option>
+            <option value="<?php echo $row['id'] ?>"><?php echo $row['nombre'] . ' - ' . $row['cultivo'] ?></option>
         <?php
-            }
           }
-         ?>
+        }
+        ?>
       </select>
     </div>
 
@@ -96,18 +95,18 @@ i {
       <label for="r_producto">Producto</label>
       <select class="form-control" name="producto" id="r_producto">
         <option value="">Seleccione el producto</option>
-<?php 
-  $query = "SELECT * FROM producto";
-  $sql = mysqli_query($conection,$query);
-  if ($sql) {
-    while ($row = mysqli_fetch_array($sql)) {
-?>
-        <option value="<?php echo $row['id'] ?>"><?php echo $row['nombre'].' - '.$row['unidad'] ?></option>
-<?php
-    }
-  }
+        <?php
+        $query = "SELECT * FROM producto";
+        $sql = mysqli_query($conection, $query);
+        if ($sql) {
+          while ($row = mysqli_fetch_array($sql)) {
+        ?>
+            <option value="<?php echo $row['id'] ?>"><?php echo $row['nombre'] . ' - ' . $row['unidad'] ?></option>
+        <?php
+          }
+        }
 
- ?>
+        ?>
       </select>
     </div>
 
@@ -116,22 +115,22 @@ i {
         <label for="cliente">Seleccione un cliente</label>
         <select name="cliente" id="cliente" class="form-control">
           <option value="">Seleccione un cliente</option>
-    <?php 
-      $query = "SELECT * FROM cliente";
-      $sql = mysqli_query($conection,$query);
-      if ($sql) {
-        while ($row = mysqli_fetch_array($sql)) {
-    ?>
-          <option value="<?php echo $row['id'] ?>"><?php echo $row['nit'] ?> - <?php echo $row['nombre'] ?></option>
-    <?php
-        }
-      }
+          <?php
+          $query = "SELECT * FROM cliente";
+          $sql = mysqli_query($conection, $query);
+          if ($sql) {
+            while ($row = mysqli_fetch_array($sql)) {
+          ?>
+              <option value="<?php echo $row['id'] ?>"><?php echo $row['nit'] ?> - <?php echo $row['nombre'] ?></option>
+          <?php
+            }
+          }
 
-     ?>
+          ?>
         </select>
       </div>
       <div class="col-12 col-md-3">
-        <a class="btn btn-success text-white" data-dismiss="modal"  data-toggle="modal" data-target="#clientes">Agregar Cliente</a>
+        <a class="btn btn-success text-white" data-dismiss="modal" data-toggle="modal" data-target="#clientes">Crear Cliente</a>
       </div>
     </div>
 
@@ -168,13 +167,13 @@ i {
 
 </body>
 
-<?php 
-	include "end.php";
+<?php
+include "end.php";
 ?>
 
 <script>
   //registra una venta de producto
-  function add_venta(){
+  function add_venta() {
     var fecha = $('#r_fecha');
     var producto = $('#r_producto');
     var cliente = $('#cliente');
@@ -183,103 +182,102 @@ i {
     var pago = $('#pago');
 
     if (fecha.val() == "") {
-      swal('Error!','Dede de ingresar una fecha','error').then((res)=>{
+      swal('Error!', 'Dede de ingresar una fecha', 'error').then((res) => {
         fecha.focus();
       });
       return;
     }
 
     if (producto.val() == "") {
-      swal('Error!','Dede seleccionar un producto','error').then((res)=>{
+      swal('Error!', 'Dede seleccionar un producto', 'error').then((res) => {
         producto.focus();
       });
       return;
     }
 
     if (cliente.val() == "") {
-      swal('Error!','Dede seleccionar un cliente','error').then((res)=>{
+      swal('Error!', 'Dede seleccionar un cliente', 'error').then((res) => {
         cliente.focus();
       });
       return;
     }
 
     if (cantidad.val() == "") {
-      swal('Error!','Dede de ingresar una cantidad','error').then((res)=>{
+      swal('Error!', 'Dede de ingresar una cantidad', 'error').then((res) => {
         cantidad.focus();
       });
       return;
     }
 
     if (valor.val() == "") {
-      swal('Error!','Dede de ingresar un valor','error').then((res)=>{
+      swal('Error!', 'Dede de ingresar un valor', 'error').then((res) => {
         valor.focus();
       });
       return;
     }
 
     if (pago.val() == "") {
-      swal('Error!','Dede seleccionar el tipo de pago','error').then((res)=>{
+      swal('Error!', 'Dede seleccionar el tipo de pago', 'error').then((res) => {
         pago.focus();
       });
       return;
     }
 
     $.ajax({
-      url: '../../php/Admin/lotes.php',
-      type: 'POST',
-      data: $('#add_venta').serialize()+'&op=add_venta',
-    })
-    .done(function(data) {
-      if (data == '1') {
-        swal('Buen Trabajo!','Venta registrado correctamente','success').then((res)=>{
-          location.reload();
-        });      
-      }else{
-        swal('Error!',data,'error');
-      }
-    });  
+        url: '../../php/Admin/lotes.php',
+        type: 'POST',
+        data: $('#add_venta').serialize() + '&op=add_venta',
+      })
+      .done(function(data) {
+        if (data == '1') {
+          swal('Buen Trabajo!', 'Venta registrado correctamente', 'success').then((res) => {
+            location.reload();
+          });
+        } else {
+          swal('Error!', data, 'error');
+        }
+      });
   }
 
   //registrar cliente
-function add_cliente(){
-  var nit = $('#nit');
-  var nombre = $('#nombre');
-  var telefono = $('#telefono');
+  function add_cliente() {
+    var nit = $('#nit');
+    var nombre = $('#nombre');
+    var telefono = $('#telefono');
 
-  if (nit.val() == "") {
-    swal('Error!','Dede de ingresar un nit','error').then((res)=>{
-      nit.focus();
-    });
-    return;
+    if (nit.val() == "") {
+      swal('Error!', 'Dede de ingresar un nit', 'error').then((res) => {
+        nit.focus();
+      });
+      return;
+    }
+
+    if (nombre.val() == "") {
+      swal('Error!', 'Dede de ingresar un nombre', 'error').then((res) => {
+        nombre.focus();
+      });
+      return;
+    }
+
+    if (telefono.val() == "") {
+      swal('Error!', 'Dede de ingresar un telefono', 'error').then((res) => {
+        telefono.focus();
+      });
+      return;
+    }
+
+    $.ajax({
+        url: '../../php/Admin/lotes.php',
+        type: 'POST',
+        dataType: 'json',
+        data: $('#add_cliente').serialize() + '&op=add_cliente',
+      })
+      .done(function(data) {
+        $('#cliente').prepend('<option value="' + data.id + '">' + data.nit + ' - ' + data.nombre + '</option>');
+        $('#clientes').modal('hide');
+        $('#registrar').modal('show');
+      });
   }
-
-  if (nombre.val() == "") {
-    swal('Error!','Dede de ingresar un nombre','error').then((res)=>{
-      nombre.focus();
-    });
-    return;
-  }
-
-  if (telefono.val() == "") {
-    swal('Error!','Dede de ingresar un telefono','error').then((res)=>{
-      telefono.focus();
-    });
-    return;
-  }
-
-  $.ajax({
-    url: '../../php/Admin/lotes.php',
-    type: 'POST',
-    dataType: 'json',
-    data: $('#add_cliente').serialize()+'&op=add_cliente',
-  })
-  .done(function(data) {
-    $('#cliente').prepend('<option value="'+data.id+'">'+data.nit+' - '+data.nombre+'</option>');
-    $('#clientes').modal('hide');
-    $('#registrar').modal('show');
-  });
-}
-
 </script>
 
 
