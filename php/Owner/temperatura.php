@@ -40,6 +40,7 @@ if (isset($_POST)) {
 		}
 	}
 
+
 	//eliminar
 	if ($tipo == 'delete') {
 

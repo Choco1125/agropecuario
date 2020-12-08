@@ -2,7 +2,7 @@
 include "main.php";
 ?>
 
-<link rel="stylesheet" href="../../css/datatables.min.css">
+<link rel="stylesheet" href="../../../css/datatables.min.css">
 
 </body>
 
@@ -69,7 +69,6 @@ include "main.php";
 
 
 <div class="container contenedor">
-  <?php echo date('Y-m-d', strtotime('2020-W51')); ?>
   <br>
   <div class="row">
     <div class="col-2 text-center">
@@ -212,9 +211,6 @@ include "main.php";
             <td> <?php echo date('d/m/Y', strtotime($row['semana'])) ?> - <?php echo date('d/m/Y', strtotime($row['semana'] . "+ 7 days")) ?> </td>
             <td> <img class="logos" src="../<?php echo $row['imagen'] ?>" alt=""> </td>
             <td>
-              <a data-toggle="modal" data-target="#editar_sociedad" onclick="upload_data(<?php echo $row['id']; ?>)" class="btn btn-secondary">
-                <i class="far fa-edit"> </i>
-              </a>
               <a onclick="eliminar(<?php echo $row['id'] ?>)" class="btn btn-success">
                 <i class="fas fa-trash-alt"> </i>
               </a>
@@ -236,7 +232,7 @@ include "main.php";
 include "end.php";
 ?>
 
-<script src="../../js/datatables.min.js"> </script>
+<script src="../../../js/datatables.min.js"> </script>
 <script>
   $(document).ready(function() {
     $('#tabla').DataTable({
@@ -319,7 +315,7 @@ include "end.php";
       return;
     }
     if (file == undefined) {
-      swal('Error!', 'Debe ingresar una imagen para la sociedad', 'error');
+      swal('Error!', 'Debe ingresar una imagen de temperatura', 'error');
       return;
     }
     var data = new FormData();
@@ -339,7 +335,7 @@ include "end.php";
         if (data == "1") {
           swal({
             title: "Buen trabajo",
-            text: "La sociedad fue agregada correctamente",
+            text: "La imagen fue agregada correctamente",
             icon: "success",
             button: true,
           }).then((res) => {
@@ -357,13 +353,13 @@ include "end.php";
   function eliminar(id) {
     swal({
       title: "Advertencia",
-      text: "¿Seguro de querer eliminar esta sociedad?  \r\n Recuerde que cuando elimina una sociedad se elimina todas las fincas relacionadas con esta",
+      text: "¿Seguro de querer eliminar esta imagen de temperatura?",
       icon: "warning",
       buttons: true,
     }).then((res) => {
       if (res) {
         $.ajax({
-            url: '../../php/Owner/temperatura.php',
+            url: '../../../php/Owner/temperatura.php',
             type: 'POST',
             data: {
               op: 'delete',
@@ -374,7 +370,7 @@ include "end.php";
             if (data == 1) {
               swal({
                 title: "Buen trabajo",
-                text: "Se elimino correctamente la sociedad",
+                text: "Se elimino correctamente la imagen",
                 icon: "success",
                 button: true,
               }).then((res) => {
